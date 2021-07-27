@@ -1,0 +1,36 @@
+{
+    "files.autoSave": "onFocusChange",
+    "editor.formatOnSave": true,
+    "git.enableSmartCommit": true,
+    "emmet.includeLanguages": {
+        "postcss": "css"
+    },
+    "files.associations": {
+        "*.css": "postcss"
+    },
+    "files.exclude": {
+        "**/node_modules/": true,
+        "package-lock.json": true,
+        "yarn.lock": true,
+        "**/.next": true,
+        "**/dist/": true,
+        "next-env.d.ts": true,
+        ".husky": true
+    },
+    "git.autofetch": true,
+    "editor.fontLigatures": true,
+    "editor.emptySelectionClipboard": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.editor.showTabs": true,
+    "editor.formatOnPaste": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+        "source.sortImports": true
+    },
+    "cSpell.words": [
+        "Stockr",
+        "dhayaec",
+        "nxtt"
+    ],
+    "browser-preview.startUrl": "http://localhost:8000"
+}
