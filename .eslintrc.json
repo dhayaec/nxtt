@@ -53,6 +53,10 @@
                 "max": 1,
                 "maxBOF": 0
             }
+        ],
+        "comma-dangle": [
+            "error",
+            "always-multiline"
         ]
     }
 }
