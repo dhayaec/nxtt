@@ -30,7 +30,8 @@
     "cSpell.words": [
         "Stockr",
         "dhayaec",
-        "nxtt"
+        "nxtt",
+        "typeahead"
     ],
     "browser-preview.startUrl": "http://localhost:8000"
 }
