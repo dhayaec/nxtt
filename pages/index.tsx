@@ -9,7 +9,7 @@ interface HomeProps {
 const Home = ({ stars }: HomeProps): JSX.Element => (
     <Layout>
         <div className="flex justify-center items-center">
-            <h1 className="text-center text-2xl">Welcome {stars}</h1>
+            <h1 className="app-h1">Welcome {stars}</h1>
         </div>
 
         <div className="flex justify-center items-center">
@@ -27,7 +27,7 @@ const Home = ({ stars }: HomeProps): JSX.Element => (
 export const getStaticProps: GetStaticProps = async () => {
     const res = await fetch('https://api.github.com/repos/vercel/next.js')
     const json = await res.json()
-    console.error(process.env.ENV_VARIABLE);
+    console.error(process.env.ENV_VARIABLE)
 
     return {
         props: {

@@ -8,6 +8,9 @@
     "files.associations": {
         "*.css": "postcss"
     },
+    "emmet.syntaxProfiles": {
+        "postcss": "css"
+    },
     "files.exclude": {
         "**/node_modules/": true,
         "package-lock.json": true,
