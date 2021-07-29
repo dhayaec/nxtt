@@ -2,8 +2,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
     enabled: process.env.ANALYZE === 'true',
 })
 
-const nextConfig = {
-
-}
+const nextConfig = {}
 
 module.exports = withBundleAnalyzer(nextConfig)

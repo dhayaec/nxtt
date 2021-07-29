@@ -1,4 +1,4 @@
-import { Layout } from "../src/components/core/Layout"
+import { Layout } from '../src/components/core/Layout'
 
 export default function NotFount(): JSX.Element {
     return (

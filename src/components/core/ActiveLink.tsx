@@ -6,7 +6,10 @@ export interface ActiveLinkProps extends LinkProps {
     children: React.ReactElement
 }
 
-export const ActiveLink = ({ href, children }: ActiveLinkProps): JSX.Element => {
+export const ActiveLink = ({
+    href,
+    children,
+}: ActiveLinkProps): JSX.Element => {
     const router = useRouter()
 
     let className = children.props.className || ''

@@ -1,6 +1,7 @@
-import { GetStaticProps } from "next"
-import { Layout } from "../src/components/core/Layout"
-import { isMounted } from "../src/utils/app.utils"
+import { GetStaticProps } from 'next'
+import Link from 'next/link'
+import { Layout } from '../src/components/core/Layout'
+import { isMounted } from '../src/utils/app.utils'
 
 interface HomeProps {
     stars: string
@@ -10,6 +11,9 @@ const Home = ({ stars }: HomeProps): JSX.Element => (
     <Layout>
         <div className="flex justify-center items-center">
             <h1 className="app-h1">Welcome {stars}</h1>
+            <Link href="/editor">
+                <a>Link</a>
+            </Link>
         </div>
 
         <div className="flex justify-center items-center">
