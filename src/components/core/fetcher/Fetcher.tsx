@@ -1,23 +1,22 @@
-import React, { ReactElement, useEffect, useState } from 'react'
+import React, { ReactElement } from 'react'
+import { useApi } from '../../../utils/app.utils'
+
+interface FetcherResponse extends Record<string, unknown> {
+    slip: {
+        id: number
+        advice: string
+    }
+}
 
 export default function Fetcher(): ReactElement {
-    const [advice, setAdvice] = useState('')
+    const url = `https://api.adviceslip.com/advice`
+    const { data, isLoading, hasError } = useApi(url, {})
 
-    useEffect(() => {
-        const url = 'https://api.adviceslip.com/advice'
+    if (isLoading) return <p>Loading...</p>
 
-        const fetchData = async () => {
-            try {
-                const response = await fetch(url)
-                const json = await response.json()
-                setAdvice(json.slip.advice)
-            } catch (error) {
-                console.log('error', error)
-            }
-        }
+    if (hasError) return <p>Failed to fetch open jobs 😟</p>
 
-        fetchData()
-    }, [])
+    return <i>{JSON.stringify((data as FetcherResponse)?.slip?.advice)}</i>
 
-    return <div>{advice}</div>
+    return
 }

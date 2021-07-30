@@ -23,10 +23,8 @@ const Home = ({ stars }: HomeProps): JSX.Element => {
             <Login name="Login Form" />
 
             {isMounted() && (
-                <div className="flex justify-center items-center">
-                    <i>
-                        <Fetcher />
-                    </i>
+                <div className="flex flex-col px-4 w-full md:w-1/2 lg:w-2/6 mx-auto">
+                    <Fetcher />
                 </div>
             )}
 
