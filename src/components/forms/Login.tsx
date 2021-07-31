@@ -1,6 +1,6 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Button, ButtonWidth } from '../ui/Button'
+import ErrorMessage from '../ui/ErrorMessage'
 
 interface LoginProps {
     name: string
@@ -15,38 +15,51 @@ export default function Login({ name }: LoginProps): ReactElement {
         formState: { errors },
     } = useForm()
 
-    const onSubmit = (data) => console.log(data)
+    const [data, setData] = useState({})
+
+    const onSubmit = (data) => {
+        setData(data)
+    }
 
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="flex flex-col px-4 w-full md:w-1/2 lg:w-2/6 mx-auto">
+                <div className="flex flex-col px-4 w-full md:w-2/3 lg:w-1/3 mx-auto">
                     <p>{name}</p>
                     <div className="field mt-2">
                         <input
+                            autoComplete="off"
                             className="w-full"
                             type="text"
-                            {...register('example', { required: true })}
+                            {...register('name', { required: true })}
                             placeholder="Full name"
                         />
-                        {errors.example && (
-                            <span className="text-red-600 text-xs">
-                                This field is required
-                            </span>
-                        )}
+                        <ErrorMessage
+                            isError={errors.name}
+                            msg="This field is required"
+                        />
                     </div>
                     <div className="field mt-2">
                         <input
+                            autoComplete="off"
                             className="w-full"
                             type="email"
-                            {...register('exampleRequired', { required: true })}
+                            {...register('email', { required: true })}
                             placeholder="Email address"
                         />
-                        {errors.exampleRequired && (
-                            <span className="text-red-600 text-xs">
-                                This field is required
-                            </span>
-                        )}
+                        <ErrorMessage
+                            isError={errors.email}
+                            msg="This field is required"
+                        />
+                    </div>
+                    <div className="field mt-2">
+                        <input
+                            autoComplete="off"
+                            className="w-full"
+                            type="search"
+                            {...register('search')}
+                            placeholder="Search"
+                        />
                     </div>
                     <div className="field mt-2">
                         <select
@@ -62,11 +75,28 @@ export default function Login({ name }: LoginProps): ReactElement {
                                 </option>
                             ))}
                         </select>
-                        {errors.age && (
-                            <span className="text-red-600 text-xs">
-                                This field is required
+                        <ErrorMessage
+                            isError={errors.age}
+                            msg="This field is required"
+                        />
+                    </div>
+
+                    <div className="field mt-2">
+                        <label className="block">
+                            <span className="text-gray-700">
+                                When is your event?
                             </span>
-                        )}
+                            <input
+                                autoComplete="off"
+                                {...register('date', { required: true })}
+                                type="date"
+                                className="mt-1 block w-full"
+                            />
+                            <ErrorMessage
+                                isError={errors.date}
+                                msg="This field is required"
+                            />
+                        </label>
                     </div>
 
                     <div className="field mt-2">
@@ -78,6 +108,7 @@ export default function Login({ name }: LoginProps): ReactElement {
                     </div>
                     <div className="field mt-2 flex items-center">
                         <input
+                            autoComplete="off"
                             {...register('remember_me', { required: true })}
                             id="remember_me"
                             name="remember_me"
@@ -92,14 +123,24 @@ export default function Login({ name }: LoginProps): ReactElement {
                         </label>
                     </div>
                     <div className="field mt-2 text-center">
-                        <Button
-                            width={ButtonWidth.full}
-                            label="Login"
+                        <button
+                            className="btn btn-indigo btn-full"
                             type="submit"
-                        />
+                        >
+                            Sign Up
+                        </button>
                     </div>
                 </div>
             </form>
+            <div className="flex flex-col px-4 w-full md:w-1/2 lg:w-2/6 mx-auto">
+                <ul>
+                    <li>
+                        {Object.keys(data).map((i) => (
+                            <p key={i}>{`${i} : ${data[i]}`}</p>
+                        ))}
+                    </li>
+                </ul>
+            </div>
         </div>
     )
 }
